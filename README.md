@@ -1,0 +1,2 @@
+# tricalc
+Triangle Calculator
