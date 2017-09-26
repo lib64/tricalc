@@ -1,11 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "formula.h"
 
 #include <QDebug>
 #include <QTimer>
 #include <math.h>
-
-# define M_PI 3.14159265358979323846  /* pi */
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -90,5 +89,4 @@ void MainWindow::updateValues()
     ui->lineEdit_38->setText(QString::number(1/sin(C)));
     ui->lineEdit_36->setText(QString::number(1/cos(C)));
     ui->lineEdit_37->setText(QString::number(1/tan(C)));
-
 }

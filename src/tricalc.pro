@@ -27,12 +27,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     corner.cpp \
-    trianglescene.cpp
+    trianglescene.cpp \
+    formula.cpp
 
 HEADERS += \
         mainwindow.h \
     corner.h \
-    trianglescene.h
+    trianglescene.h \
+    formula.h
 
 FORMS += \
         mainwindow.ui

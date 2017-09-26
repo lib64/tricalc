@@ -1,4 +1,5 @@
 #include "trianglescene.h"
+#include "formula.h"
 
 TriangleScene::TriangleScene(Corner *A, Corner *B, Corner *C)
 {
