@@ -27,6 +27,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _C->setPos(0,100);
     _A->setPos(100,100);
 
+    changed = true;
+
     _scene->update();
     _scene->draw();
 
@@ -43,11 +45,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::updateValues()
 {
-    if(_lastA == _A->pos() && _lastB == _B->pos() && _lastC == _C->pos())
+    if(_lastA == _A->pos() && _lastB == _B->pos() && _lastC == _C->pos() && !changed)
     {
         return;
     }
 
+    changed = false;
     _lastA = _A->pos();
     _lastB = _B->pos();
     _lastC = _C->pos();
@@ -66,9 +69,18 @@ void MainWindow::updateValues()
     ui->lineEdit_45->setText(QString::number(b)); // b
     ui->lineEdit_46->setText(QString::number(c)); // c
 
-    ui->lineEdit_50->setText(QString::number( A * (180/M_PI)  ) + "°"); // A
-    ui->lineEdit_48->setText(QString::number( B * (180/M_PI)  ) + "°"); // B
-    ui->lineEdit_49->setText(QString::number( C * (180/M_PI)  ) + "°"); // C
+    if(ui->radioButton->isChecked())
+    {
+        ui->lineEdit_50->setText(QString::number( A * (180/M_PI)  ) + "°"); // A
+        ui->lineEdit_48->setText(QString::number( B * (180/M_PI)  ) + "°"); // B
+        ui->lineEdit_49->setText(QString::number( C * (180/M_PI)  ) + "°"); // C
+    }
+    else
+    {
+        ui->lineEdit_50->setText(QString::number( A )); // A
+        ui->lineEdit_48->setText(QString::number( B )); // B
+        ui->lineEdit_49->setText(QString::number( C )); // C
+    }
 
     ui->lineEdit_41->setText(QString::number( _A->x() ));
     ui->lineEdit_44->setText(QString::number( _A->y() ));
@@ -99,4 +111,14 @@ void MainWindow::updateValues()
     ui->lineEdit_38->setText(QString::number(1/sin(C)));
     ui->lineEdit_36->setText((C*(180/M_PI) == 90) ? "Undfined" : QString::number(1/cos(C)));
     ui->lineEdit_37->setText(QString::number((C*(180/M_PI) == 90) ? 0 : 1/tan(C)));
+}
+
+void MainWindow::on_radioButton_clicked()
+{
+    changed = true;
+}
+
+void MainWindow::on_radioButton_2_clicked()
+{
+    changed = true;
 }

@@ -27,11 +27,14 @@ private:
     Corner *_B;
     Corner *_C;
     QPointF _lastA, _lastB, _lastC;
+    bool changed;
     QTimer * _timer;
 
 private slots:
 
     void updateValues();
+    void on_radioButton_clicked();
+    void on_radioButton_2_clicked();
 };
 
 #endif // MAINWINDOW_H
