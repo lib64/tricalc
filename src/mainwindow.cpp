@@ -6,8 +6,6 @@
 #include <QTimer>
 #include <math.h>
 
-const qreal UNDEFINED = 6.12323e-17;
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)

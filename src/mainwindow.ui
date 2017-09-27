@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>943</width>
-    <height>507</height>
+    <height>519</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>TriCalc</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_8">
