@@ -6,6 +6,8 @@
 #include <QTimer>
 #include <math.h>
 
+const qreal UNDEFINED = 6.12323e-17;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -28,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _A->setPos(100,100);
 
     _scene->update();
+    _scene->draw();
 
     _timer = new QTimer(this);
     _timer->start(10);
@@ -42,6 +45,15 @@ MainWindow::~MainWindow()
 
 void MainWindow::updateValues()
 {
+    if(_lastA == _A->pos() && _lastB == _B->pos() && _lastC == _C->pos())
+    {
+        return;
+    }
+
+    _lastA = _A->pos();
+    _lastB = _B->pos();
+    _lastC = _C->pos();
+
     _scene->draw();
 
     qreal a = distance(*_B, *_C);
@@ -70,23 +82,23 @@ void MainWindow::updateValues()
     ui->lineEdit_43->setText(QString::number( _C->y() ));
 
     ui->lineEdit->setText(QString::number(sin(A)));
-    ui->lineEdit_4->setText(QString::number(cos(A)));
-    ui->lineEdit_5->setText(QString::number(tan(A)));
+    ui->lineEdit_4->setText(QString::number((A*(180/M_PI) == 90) ? 0 : cos(A)));
+    ui->lineEdit_5->setText((A*(180/M_PI) == 90) ? "Undfined" : QString::number(tan(A)));
     ui->lineEdit_8->setText(QString::number(1/sin(A)));
-    ui->lineEdit_6->setText(QString::number(1/cos(A)));
-    ui->lineEdit_7->setText(QString::number(1/tan(A)));
+    ui->lineEdit_6->setText((A*(180/M_PI) == 90) ? "Undfined" : QString::number(1/cos(A)));
+    ui->lineEdit_7->setText(QString::number((A*(180/M_PI) == 90) ? 0 : 1/tan(A)));
 
     ui->lineEdit_29->setText(QString::number(sin(B)));
-    ui->lineEdit_27->setText(QString::number(cos(B)));
-    ui->lineEdit_28->setText(QString::number(tan(B)));
+    ui->lineEdit_27->setText(QString::number((B*(180/M_PI) == 90) ? 0 : cos(B)));
+    ui->lineEdit_28->setText((B*(180/M_PI) == 90) ? "Undfined" : QString::number(tan(B)));
     ui->lineEdit_32->setText(QString::number(1/sin(B)));
-    ui->lineEdit_30->setText(QString::number(1/cos(B)));
-    ui->lineEdit_31->setText(QString::number(1/tan(B)));
+    ui->lineEdit_30->setText((B*(180/M_PI) == 90) ? "Undfined" : QString::number(1/cos(B)));
+    ui->lineEdit_31->setText(QString::number((B*(180/M_PI) == 90) ? 0 : 1/tan(B)));
 
     ui->lineEdit_35->setText(QString::number(sin(C)));
-    ui->lineEdit_33->setText(QString::number(cos(C)));
-    ui->lineEdit_34->setText(QString::number(tan(C)));
+    ui->lineEdit_33->setText(QString::number( (C*(180/M_PI) == 90) ? 0 : cos(C) ));
+    ui->lineEdit_34->setText((C*(180/M_PI) == 90) ? "Undfined" : QString::number(tan(C)));
     ui->lineEdit_38->setText(QString::number(1/sin(C)));
-    ui->lineEdit_36->setText(QString::number(1/cos(C)));
-    ui->lineEdit_37->setText(QString::number(1/tan(C)));
+    ui->lineEdit_36->setText((C*(180/M_PI) == 90) ? "Undfined" : QString::number(1/cos(C)));
+    ui->lineEdit_37->setText(QString::number((C*(180/M_PI) == 90) ? 0 : 1/tan(C)));
 }

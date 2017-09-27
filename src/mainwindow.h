@@ -26,6 +26,7 @@ private:
     Corner *_A;
     Corner *_B;
     Corner *_C;
+    QPointF _lastA, _lastB, _lastC;
     QTimer * _timer;
 
 private slots:
