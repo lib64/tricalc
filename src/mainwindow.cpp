@@ -12,9 +12,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    _A = new Corner(30);
-    _B = new Corner(30);
-    _C = new Corner(30);
+    _A = new Corner(7);
+    _B = new Corner(7);
+    _C = new Corner(7);
 
     _scene = new TriangleScene(_A,_B,_C);
     ui->graphicsView->setScene(_scene);
@@ -71,9 +71,9 @@ void MainWindow::updateValues()
 
     if(ui->radioButton->isChecked())
     {
-        ui->lineEdit_50->setText(QString::number( A * (180/M_PI)  ) + "°"); // A
-        ui->lineEdit_48->setText(QString::number( B * (180/M_PI)  ) + "°"); // B
-        ui->lineEdit_49->setText(QString::number( C * (180/M_PI)  ) + "°"); // C
+        ui->lineEdit_50->setText(QString::number( A * (180/M_PI)  )); // A
+        ui->lineEdit_48->setText(QString::number( B * (180/M_PI)  )); // B
+        ui->lineEdit_49->setText(QString::number( C * (180/M_PI)  )); // C
     }
     else
     {
@@ -121,4 +121,38 @@ void MainWindow::on_radioButton_clicked()
 void MainWindow::on_radioButton_2_clicked()
 {
     changed = true;
+}
+
+void MainWindow::on_lineEdit_41_returnPressed()
+{
+    _A->setX(ui->lineEdit_41->text().toDouble());
+}
+
+void MainWindow::on_lineEdit_44_returnPressed()
+{
+    _A->setY(ui->lineEdit_44->text().toDouble());
+}
+
+void MainWindow::on_lineEdit_39_returnPressed()
+{
+    _B->setX(ui->lineEdit_39->text().toDouble());
+
+}
+
+void MainWindow::on_lineEdit_42_returnPressed()
+{
+    _B->setY(ui->lineEdit_42->text().toDouble());
+
+}
+
+void MainWindow::on_lineEdit_40_returnPressed()
+{
+    _C->setX(ui->lineEdit_40->text().toDouble());
+
+}
+
+void MainWindow::on_lineEdit_43_returnPressed()
+{
+    _C->setY(ui->lineEdit_43->text().toDouble());
+
 }

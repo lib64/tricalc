@@ -35,6 +35,12 @@ private slots:
     void updateValues();
     void on_radioButton_clicked();
     void on_radioButton_2_clicked();
+    void on_lineEdit_41_returnPressed();
+    void on_lineEdit_44_returnPressed();
+    void on_lineEdit_39_returnPressed();
+    void on_lineEdit_42_returnPressed();
+    void on_lineEdit_40_returnPressed();
+    void on_lineEdit_43_returnPressed();
 };
 
 #endif // MAINWINDOW_H

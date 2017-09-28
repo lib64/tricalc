@@ -11,7 +11,7 @@ class TriangleScene : public QGraphicsScene
     QGraphicsLineItem *_a, *_b, *_c;
     QGraphicsTextItem *_labelA, *_labelB, *_labelC;
     QGraphicsTextItem *_labela, *_labelb, *_labelc;
-
+    QGraphicsPolygonItem *_triangle;
 public:
     TriangleScene(Corner *A, Corner *B, Corner *C);
 public slots:

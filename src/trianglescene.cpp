@@ -27,6 +27,7 @@ TriangleScene::TriangleScene(Corner *A, Corner *B, Corner *C)
 
 void TriangleScene::draw()
 {
+
     _a->setLine(_A->x()+_A->radius()/2,
                 _A->y()+_A->radius()/2,
                 _B->x()+_B->radius()/2,

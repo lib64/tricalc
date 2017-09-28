@@ -23,6 +23,8 @@ void Corner::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     Q_UNUSED(option);
     Q_UNUSED(widget);
 
+    QBrush brush(Qt::black);
+    painter->setBrush(brush);
     painter->drawEllipse(0, 0, _radius, _radius);
 
 }
