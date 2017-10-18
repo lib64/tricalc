@@ -2,19 +2,22 @@
 #include "ui_mainwindow.h"
 #include "formula.h"
 
+#include <QScrollBar>
 #include <QDebug>
 #include <QTimer>
 #include <math.h>
 
+
+#define RADIUS 7
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    _A = new Corner(7);
-    _B = new Corner(7);
-    _C = new Corner(7);
+    _A = new Corner(RADIUS);
+    _B = new Corner(RADIUS);
+    _C = new Corner(RADIUS);
 
     _scene = new TriangleScene(_A,_B,_C);
     ui->graphicsView->setScene(_scene);
@@ -36,6 +39,10 @@ MainWindow::MainWindow(QWidget *parent) :
     _timer->start(10);
 
     connect(_timer, &QTimer::timeout, this, &MainWindow::updateValues);
+
+    ui->graphicsView->centerOn(_C->pos());
+
+
 }
 
 MainWindow::~MainWindow()
@@ -136,23 +143,19 @@ void MainWindow::on_lineEdit_44_returnPressed()
 void MainWindow::on_lineEdit_39_returnPressed()
 {
     _B->setX(ui->lineEdit_39->text().toDouble());
-
 }
 
 void MainWindow::on_lineEdit_42_returnPressed()
 {
     _B->setY(ui->lineEdit_42->text().toDouble());
-
 }
 
 void MainWindow::on_lineEdit_40_returnPressed()
 {
     _C->setX(ui->lineEdit_40->text().toDouble());
-
 }
 
 void MainWindow::on_lineEdit_43_returnPressed()
 {
     _C->setY(ui->lineEdit_43->text().toDouble());
-
 }

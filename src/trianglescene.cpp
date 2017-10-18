@@ -3,6 +3,9 @@
 
 TriangleScene::TriangleScene(Corner *A, Corner *B, Corner *C)
 {
+    setSceneRect(-1000,-1000,2000,2000);
+
+
     _A = A;
     _B = B;
     _C = C;
@@ -10,7 +13,6 @@ TriangleScene::TriangleScene(Corner *A, Corner *B, Corner *C)
     _a = addLine(_A->x(),_A->y(),_B->x(),_B->y());
     _b = addLine(_A->x(),_A->y(),_B->x(),_B->y());
     _c = addLine(_A->x(),_A->y(),_C->x(),_C->y());
-
 
     _labelA = addText("A");
     _labelB = addText("B");
@@ -21,12 +23,33 @@ TriangleScene::TriangleScene(Corner *A, Corner *B, Corner *C)
     _labelc = addText("c");
 
 
+    QRect rect = sceneRect().toRect();
+    QPen pen(Qt::gray);
 
+    for(int i = rect.x(); i < rect.width(); i += 20)
+    {
+        QGraphicsLineItem *line = addLine(i, rect.y(), i, rect.height());
+        line->setPen(pen);
+        _linesY.append(line);
+    }
+
+    for(int i = rect.y(); i < rect.height(); i += 20)
+    {
+        QGraphicsLineItem *line = addLine(rect.x(), i, rect.width(), i);
+        line->setPen(pen);
+        _linesX.append(line);
+    }
 }
 
 
 void TriangleScene::draw()
 {
+    QPen pen(Qt::black);
+    pen.setWidth(2);
+
+    _a->setPen(pen);
+    _b->setPen(pen);
+    _c->setPen(pen);
 
     _a->setLine(_A->x()+_A->radius()/2,
                 _A->y()+_A->radius()/2,
