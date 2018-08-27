@@ -8,16 +8,17 @@
 #include <math.h>
 
 
-#define RADIUS 7
+#define POINT_RADIUS 7
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    _A = new Corner(RADIUS);
-    _B = new Corner(RADIUS);
-    _C = new Corner(RADIUS);
+    _A = new Corner(POINT_RADIUS);
+    _B = new Corner(POINT_RADIUS);
+    _C = new Corner(POINT_RADIUS);
 
     _scene = new TriangleScene(_A,_B,_C);
     ui->graphicsView->setScene(_scene);
@@ -118,6 +119,8 @@ void MainWindow::updateValues()
     ui->lineEdit_38->setText(QString::number(1/sin(C)));
     ui->lineEdit_36->setText((C*(180/M_PI) == 90) ? "Undfined" : QString::number(1/cos(C)));
     ui->lineEdit_37->setText(QString::number((C*(180/M_PI) == 90) ? 0 : 1/tan(C)));
+
+    ui->lineEdit_2->setText(QString::number( .5 * a * b * sin(C) ));
 }
 
 void MainWindow::on_radioButton_clicked()

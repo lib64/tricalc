@@ -25,6 +25,6 @@ void Corner::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 
     QBrush brush(Qt::black);
     painter->setBrush(brush);
-    painter->drawEllipse(0, 0, _radius, _radius);
+    painter->drawEllipse(0, 0, static_cast<int>(_radius), static_cast<int>(_radius));
 
 }
