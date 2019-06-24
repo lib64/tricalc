@@ -1,3 +1,8 @@
+/* 
+ * Copyright (c) 2018-2019, Michael Harper
+ * 
+ * See LICENSE for licensing information */
+
 #ifndef TRIANGLESCENE_H
 #define TRIANGLESCENE_H
 
